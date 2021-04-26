@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Artists";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Name</h2>
+
+@foreach (var artist in ViewBag.Artists)
+{
+    <div class="panel-body">
+        @Html.Label("Name", "Name:")
+        <br />
+        <p> @artist.Name</p>
+
+    </div>
+}

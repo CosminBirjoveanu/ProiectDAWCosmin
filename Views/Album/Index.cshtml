@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Albums";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title</h2>
+
+@foreach (var album in ViewBag.Albums)
+{
+<div class="panel-body">
+    @Html.Label("Title", "Title:")
+    <br />
+    <p> @album.Title</p>
+
+    @using (Html.BeginForm(actionName: "Details", controllerName: "Album", method: FormMethod.Get, routeValues: new { id = album.AlbumId }))
+    {
+        <button class="btn btn-primary">Details </button>
+    }
+</div>
+}
+
+@Html.ActionLink("Add album", "New");
+

@@ -1,0 +1,65 @@
+﻿@model ProiectDAWCosmin.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+    string emptySongsMsg = "This album has no songs registered";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.Label("Title", "Title:")
+<br />
+<p>@Model.Title</p>
+
+
+@Html.Label("Artist name", "Artist name:")
+<br />
+<p>@Model.Artist.Name</p>
+<br/>
+@Html.Label("BandWebsite", "BandWebsite:")
+<br />
+<a>@Model.Artist.BandWebsite.Website</a>
+<br />
+<br/>
+
+@Html.Label("Label", "Label:")
+<br />
+<p>@Model.Label.Name</p>
+<br/>
+
+@Html.Label("Songs", "Songs:")
+<br />
+<div class="panel-body">
+    @if (Model.Songs.IsEmpty())
+    {
+        <p> @emptySongsMsg</p>
+    }
+    else
+    {
+        <p> @Model.Songs</p>
+    }
+</div>
+
+@if (Model.Genres.Count > 0)
+{
+    @Html.Label("Genres", "Genres:")
+    <br />
+    <ul>
+        @foreach (var genre in Model.Genres)
+        {
+            <li> @genre.Title</li>
+        }
+    </ul>
+}
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Album", method: FormMethod.Get, routeValues: new { id = Model.AlbumId }))
+{
+    <button class="btn btn-primary col-lg-1" type="submit" style="margin-right:5px">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Album", method: FormMethod.Post, routeValues: new { id = Model.AlbumId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-primary col-lg-1" type="submit" style="margin-right:5px">Remove</button>
+}
+<br />

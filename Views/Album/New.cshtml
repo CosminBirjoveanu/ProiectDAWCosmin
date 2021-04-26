@@ -1,0 +1,23 @@
+﻿@model ProiectDAWCosmin.Models.Album
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Album", method: FormMethod.Post))
+{
+    @Html.Label("Title", "Title:")
+    <br />
+    @Html.TextBoxFor(b => b.Title, null, new { placeholder = "Type in the album's title", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Title, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Songs", "Songs:")
+    <br />
+    @Html.TextArea("Songs", null, new { placeholder = "Type in the album's songs", @class = "form-control", @rows = "10" })
+    @Html.ValidationMessageFor(b => b.Songs, "", new { @class = "text-danger" })
+    <br />
+
+    <input class="btn btn-primary" type="submit" value="Create" /> 
+}

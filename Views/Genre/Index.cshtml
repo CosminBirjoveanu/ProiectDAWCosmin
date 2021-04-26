@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "GenreIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Name</h2>
+
+@foreach (var genre in ViewBag.Genres)
+{
+    <div class="panel-body">
+        @Html.Label("Title", "Title:")
+        <br />
+        <p> @genre.Title</p>
+
+    </div>
+}
+
+

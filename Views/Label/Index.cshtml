@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Name= "Labels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Name</h2>
+
+@foreach (var label in ViewBag.Labels)
+{
+    <div class="panel-body">
+        @Html.Label("Name", "Name:")
+        <br />
+        <p> @label.Name</p>
+
+    </div>
+}
+

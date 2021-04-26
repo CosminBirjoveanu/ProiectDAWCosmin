@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "BandWebsiteIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Name</h2>
+
+@foreach (var website in ViewBag.Websites)
+{
+    <div class="panel-body">
+        @Html.Label("Website", "Website:")
+        <br />
+        <p> @website.Website</p>
+
+    </div>
+}
+
+
